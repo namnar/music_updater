@@ -50,8 +50,10 @@ def main():
 
   destination_list = get_music_folder(destination_path)
   source_list = get_music_folder(source_path)
+  # print(destination_list)
+  # print(source_list)
 
-  difference = get_song_difference(destination_list, source_list)
+  difference = get_song_difference(destination_path, source_path)
   print("Expected: All Night Radio, Alone")
   print(difference)
 
