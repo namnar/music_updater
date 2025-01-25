@@ -30,7 +30,7 @@ def download_difference(destination, source, difference):
   """
   # difference_p = [os.path.join(target, song) for song in difference] #turns names of songs into navigable absolute paths
 
-  for file in tqdm(difference, desc="Copying Files..."):
+  for file in tqdm.tqdm(difference, desc="Copying Files..."):
     source_path = os.path.join(source, file)
     destination_path = os.path.join(destination, file)
 
@@ -58,7 +58,13 @@ def main():
   print(difference)
 
 
-  # download_difference(destination_path, source_path, difference)
+  download_difference(destination_path, source_path, difference)
+
+  print("after download\ndestination")
+  print(get_music_folder(destination_path))
+  print('source')
+  print(get_music_folder(source_path))
+  
 
 if __name__ == "__main__":
   main()
