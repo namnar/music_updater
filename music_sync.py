@@ -36,21 +36,27 @@ def download_difference(destination, source, difference):
 
     shutil.copy2(source_path, destination_path)
 
+  print("All missing files successfully copied o7")
+
 
 def main():
   load_dotenv()
 
-  destination_path = os.getenv("MUSIC_DESTINATION_PATH")
-  source_path = os.getenv("MUSIC_SOURCE_PATH")
+  # destination_path = os.getenv("MUSIC_DESTINATION_PATH")
+  # source_path = os.getenv("MUSIC_SOURCE_PATH")
+
+  destination_path = os.getenv("TEST1")
+  source_path = os.getenv("TEST2")
 
   destination_list = get_music_folder(destination_path)
   source_list = get_music_folder(source_path)
 
-  difference = get_song_difference(destination_path, source_path)
-  print(destination_list)
+  difference = get_song_difference(destination_list, source_list)
+  print("Expected: All Night Radio, Alone")
+  print(difference)
 
 
-  download_difference(destination_path, source_path, difference)
+  # download_difference(destination_path, source_path, difference)
 
 if __name__ == "__main__":
   main()
