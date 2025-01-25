@@ -1,5 +1,7 @@
 import os
 import tqdm
+import shutil
+from dotenv import load_dotenv
 
 
 #get_music_file(path)
@@ -29,15 +31,17 @@ def download_difference(destination, source, difference):
   # difference_p = [os.path.join(target, song) for song in difference] #turns names of songs into navigable absolute paths
 
   for file in tqdm(difference, desc="Copying Files..."):
-    source_path = os.path.join()
+    source_path = os.path.join(source, file)
+    destination_path = os.path.join(destination, file)
 
-  print('complete')
+    shutil.copy2(source_path, destination_path)
 
 
 def main():
-  print("hello")
-  destination_path = r"C:\Users\danie\Music\Music"
-  source_path = r"C:\Users\danie\Music\Music"
+  load_dotenv()
+
+  destination_path = os.getenv("MUSIC_DESTINATION_PATH")
+  source_path = os.getenv("MUSIC_SOURCE_PATH")
 
   destination_list = get_music_folder(destination_path)
   source_list = get_music_folder(source_path)
